@@ -1,0 +1,43 @@
+﻿@model List<@EX3.Models.HocVien>
+
+@{
+    ViewBag.Title = "Danh Sách Học Viên";
+}
+
+<h2>Danh Sách Học Viên</h2>
+
+@if (Model != null && Model.Count > 0)
+{
+    <table>
+        <tr>
+            <th>Mã học viên</th>
+            <th>Họ và tên</th>
+            <th>Giới tính</th>
+            <th>Ngày sinh</th>
+            <th>Học phí</th>
+            <th>Hình ảnh</th>
+            <th>Ghi chú</th>
+        </tr>
+        @foreach (var hocVien in Model)
+        {
+            <tr>
+                <td>@hocVien.MaHocVien</td>
+                <td>@hocVien.HoTen</td>
+                <td>@hocVien.GioiTinh</td>
+                <td>@hocVien.NgaySinh.ToString("yyyy-MM-dd")</td>
+                <td>@hocVien.HocPhi</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(hocVien.HinhAnh))
+                    {
+                        <img src="@Url.Content(hocVien.HinhAnh)" alt="Hình ảnh" style="width:100px; height:auto;" />
+                    }
+                </td>
+                <td>@hocVien.GhiChu</td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <p>Không có dữ liệu học viên để hiển thị.</p>
+}

@@ -1,0 +1,57 @@
+﻿@model EX3.Models.HocVien
+
+@{
+    ViewBag.Title = "Form Nhập Thông Tin Học Viên";
+}
+
+<h2>Form Nhập Thông Tin Học Viên</h2>
+
+@using (Html.BeginForm("LuuHocVien", "HocVien", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div>
+        <label>Mã học viên:</label>
+        @Html.TextBoxFor(m => m.MaHocVien)
+        @Html.ValidationMessageFor(m => m.MaHocVien)
+    </div>
+    <div>
+        <label>Họ và tên:</label>
+        @Html.TextBoxFor(m => m.HoTen)
+        @Html.ValidationMessageFor(m => m.HoTen)
+    </div>
+    <div>
+        <label>Giới tính:</label>
+        @Html.RadioButtonFor(m => m.GioiTinh, "Nam") Nam
+        @Html.RadioButtonFor(m => m.GioiTinh, "Nữ") Nữ
+        @Html.ValidationMessageFor(m => m.GioiTinh)
+    </div>
+    <div>
+        <label>Ngày sinh:</label>
+        @Html.TextBoxFor(m => m.NgaySinh, "{0:yyyy-MM-dd}", new { type = "date" })
+        @Html.ValidationMessageFor(m => m.NgaySinh)
+    </div>
+    <div>
+        <label>Học phí:</label>
+        @Html.TextBoxFor(m => m.HocPhi)
+        @Html.ValidationMessageFor(m => m.HocPhi)
+    </div>
+    <div>
+        <label>Ghi chú:</label>
+        @Html.TextAreaFor(m => m.GhiChu)
+    </div>
+    <div>
+        <label>Hình ảnh:</label>
+        <input type="file" name="HinhAnh" accept="image/*" />
+    </div>
+    <div>
+        <input type="submit" value="Lưu thông tin" />
+    </div>
+}
+@using (Html.BeginForm("DocHocVien", "HocVien", FormMethod.Get))
+{
+    <input type="submit" value="Xem danh sách học viên" />
+}
+@{
+    int hitCount = ViewBag.HitCount ?? 0;
+}
+
+<h2>Đếm lượt truy cập: @hitCount</h2>

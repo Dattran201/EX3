@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Send Mail</h2>
+<form action="/Mail/Send" menthod="post">
+
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">From</label>
+        <input type="email" class="form-control" name="From">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">To</label>
+        <input type="email" class="form-control" name="To">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Subject</label>
+        <input type="text" class="form-control" name="Subject">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Body</label>
+        <textarea class="form-control" name="Body" rows="5"></textarea>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-light">Send</button>
+    </div>
+
+</form>
